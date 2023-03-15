@@ -188,7 +188,7 @@ if (!APPID || !REST_ID) {
 }
 
 //注意：http://open.faasapi.net/ 这个域名仅供国内域名备案未完成前的测试使用，请勿用于违法操作。备案完毕之后，请重新切回使用自己的备案域名。
-var bmob = new Bmob("http://open.faasapi.net/8", APPID, REST_ID);
+var bmob = new Bmob("https://api.faasapi.net/1", APPID, REST_ID);
 
 // log(bmob.timestamp()); //时间戳
 // log(bmob.userCreate("test1","123456")); //添加用户
