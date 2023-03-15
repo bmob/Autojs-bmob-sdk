@@ -16,7 +16,9 @@
 var Bmob = require('../autojs-bmob-sdk.js');
 ```
 ### Demo 示例代码
+请在使用前，先修改autojs-bmob-sdk.js里面的APPID和REST_ID
 ```javascript
+bmob.resetDomain("你自己的备案域名"); //重置为你自己的备案域名
 log(bmob.timestamp()); //时间戳
 log(bmob.userCreate("test1","123456")); //添加用户
 log(bmob.userLogin("test1","123456")); //用户登录
@@ -46,7 +48,7 @@ log(bmob.BQL("select * from ClassName limit 0,100 order by category")) //BQL查�
 ```
 ### 相关知识点
 1. autojs https://github.com/hyb1996/Auto.js
-2. Bmob http://doc.bmob.cn/data/restful/index.html
+2. Bmob http://doc.bmobapp.com/data/restful/index.html
 
 
 

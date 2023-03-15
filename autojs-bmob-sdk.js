@@ -1,14 +1,14 @@
 /*
- * @Author: autojs.xyz
- * @version 2.2.2
- * @blog: blog.csdn.net/vip
+ * @Author: autojs.xyz Bmob后端云
+ * @version 2.2.3
+ * @blog: blog.csdn.net/vip  http://doc.bmobapp.com/data/restful/index.html
  * @github: github.com/hnauto/Autojs-bmob-sdk
- * @Last Modified time: 2020-03-15 18:09:00
+ * @Last Modified time: 2023-03-15 11:00:00
  * @Description: Bmob数据库autojs SDK 
- * @Memo: 部分代码参考原作者 家 QQ:203118908
+ * @Memo: 部分代码参考原作者 家 QQ:203118908，后因业务调整，部分代码由Bmob后端云官方修改
  */
 
-//参见http://doc.bmob.cn/data/restful/
+//参见http://doc.bmobapp.com/data/restful/index.html
 const APPID = '';// APPID
 const REST_ID = ''; //REST ID
 
@@ -50,6 +50,10 @@ const Bmob = (function () {
             // "info": info
         }
         return this.makeRequest("POST", "/users/", user).body.json();
+    }
+    //重置为你自己的备案域名
+    Bmob.prototype.resetDomain = function (url) {
+        this.baseUrl = url;
     }
     //添加手机用户
     Bmob.prototype.userMobileCreate = function (phoneNum,smsCode) {
@@ -132,7 +136,7 @@ const Bmob = (function () {
         return this.makeRequest("POST", "/classes/" + className, data).body.json();
     }
     //批量增加数据
-    // https://api2.bmob.cn/1/batch/1/classes/TableName
+    // https://你的备案域名地址/8/classes/TableName
     Bmob.prototype.createObjects = function (className, items) {
         //数据样例 className 为表名 items = [{"category": "类别","word": "value1"},{"category": "类别","word": "value2"}]
         let data = {"requests": []};
@@ -179,11 +183,12 @@ const Bmob = (function () {
 
 if (!APPID || !REST_ID) {
     alert("需要注册Bmob并填入app id和rest id");
-    app.openUrl("http://doc.bmob.cn/data/restful/");
+    app.openUrl("http://doc.bmobapp.com/data/restful/index.html");
     exit();
 }
 
-var bmob = new Bmob("https://api2.bmob.cn/1", APPID, REST_ID);
+//注意：http://open.faasapi.net/ 这个域名仅供国内域名备案未完成前的测试使用，请勿用于违法操作。备案完毕之后，请重新切回使用自己的备案域名。
+var bmob = new Bmob("http://open.faasapi.net/8", APPID, REST_ID);
 
 // log(bmob.timestamp()); //时间戳
 // log(bmob.userCreate("test1","123456")); //添加用户
